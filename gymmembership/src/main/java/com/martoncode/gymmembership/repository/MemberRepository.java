@@ -1,4 +1,9 @@
 package com.martoncode.gymmembership.repository;
 
-public interface MemberRepository {
+import com.martoncode.gymmembership.model.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface MemberRepository extends JpaRepository<Member,Integer> {
 }
