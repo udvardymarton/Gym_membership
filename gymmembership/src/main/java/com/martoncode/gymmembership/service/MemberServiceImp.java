@@ -5,6 +5,8 @@ import com.martoncode.gymmembership.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberServiceImp implements MemberService {
 
@@ -14,5 +16,10 @@ public class MemberServiceImp implements MemberService {
     @Override
     public Member saveMember(Member member) {
         return memberRepository.save(member);
+    }
+
+    @Override
+    public List<Member> getAllMember() {
+        return memberRepository.findAll();
     }
 }
