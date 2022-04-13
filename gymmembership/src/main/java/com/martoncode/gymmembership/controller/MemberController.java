@@ -24,4 +24,10 @@ public class MemberController {
     public List<Member> getAllMember() {
         return memberService.getAllMember();
     }
+
+    @DeleteMapping("/delete/{name}")
+    public String deleteMember(@PathVariable(value = "name") Member member) {
+        memberService.deleteMember(member);
+        return "Delete was successfull!";
+    }
 }

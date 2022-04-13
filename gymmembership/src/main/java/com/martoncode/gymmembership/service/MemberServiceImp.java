@@ -22,4 +22,9 @@ public class MemberServiceImp implements MemberService {
     public List<Member> getAllMember() {
         return memberRepository.findAll();
     }
+
+    @Override
+    public void deleteMember(Member member) {
+        memberRepository.delete(member);
+    }
 }
