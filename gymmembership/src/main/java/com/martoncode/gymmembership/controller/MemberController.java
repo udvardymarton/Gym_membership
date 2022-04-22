@@ -36,4 +36,15 @@ public class MemberController {
         return "Delete was successful!";
     }
 
+    @PutMapping("/update/{name}/{newName}")
+    public String updateMember(@PathVariable String name, @PathVariable String newName) {
+        try {
+            memberService.updateMember(name,newName);
+        }
+        catch (Exception e) {
+            return "This old name was incorrect!";
+        }
+        return "Update was successful!";
+    }
+
 }

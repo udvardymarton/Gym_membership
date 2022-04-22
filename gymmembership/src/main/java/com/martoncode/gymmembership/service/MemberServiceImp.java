@@ -29,4 +29,11 @@ public class MemberServiceImp implements MemberService {
         List<Member> myList = memberRepository.findAll().stream().filter(member -> member.getName().equals(name)).collect(Collectors.toList());
         memberRepository.delete(myList.get(0));
     }
+
+    @Override
+    public void updateMember(String oldName, String newName) {
+        List<Member> myList = memberRepository.findAll().stream().filter(member -> member.getName().equals(oldName)).collect(Collectors.toList());
+        myList.get(0).setName(newName);
+        memberRepository.save(myList.get(0));
+    }
 }
