@@ -26,8 +26,14 @@ public class MemberController {
     }
 
     @DeleteMapping("/delete/{name}")
-    public String deleteMember(@PathVariable(value = "name") Member member) {
-        memberService.deleteMember(member);
-        return "Delete was successfull!";
+    public String deleteMember(@PathVariable(value = "name") String name) {
+        try {
+            memberService.getMemberByName(name);
+        }
+        catch (Exception e) {
+            return "This name is not in the list!";
+        }
+        return "Delete was successful!";
     }
+
 }

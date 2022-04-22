@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -24,7 +25,8 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public void deleteMember(Member member) {
-        memberRepository.delete(member);
+    public void getMemberByName(String name) {
+        List<Member> myList = memberRepository.findAll().stream().filter(member -> member.getName().equals(name)).collect(Collectors.toList());
+        memberRepository.delete(myList.get(0));
     }
 }
